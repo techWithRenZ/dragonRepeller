@@ -106,12 +106,12 @@ button3.onclick = fightDragon;
 
 function update(location) {
     monsterStats.style.display = 'none';
-    button1.innerText = location['button text'][0];
-    button2.innerText = location['button text'][1];
-    button3.innerText = location['button text'][2];
-    button1.onclick = location['button functions'][0];
-    button2.onclick = location['button functions'][1];
-    button3.onclick = location['button functions'][2];
+        button1.innerText = location['button text'][0];
+        button2.innerText = location['button text'][1];
+        button3.innerText = location['button text'][2];
+        button1.onclick = location['button functions'][0];
+        button2.onclick = location['button functions'][1];
+        button3.onclick = location['button functions'][2];
     text.innerText = location.text; // dot notation also accesses element in an array if it is a single word
 }
 
@@ -140,6 +140,7 @@ function goStore() {
 
 function goCave() {
     // console.log('Going to cave.')
+    update(locations[2]);
 }
 
 function buyHealth() {
@@ -223,18 +224,18 @@ function attack() {
         lose();
     }
     else if (monsterHealth <= 0) {
+        fighting === 2 ? winGame() : defeatMonster();
         // if (fighting === 2) {
         //     winGame();
         // }
         // else {
         //     defeatMonster();
         // }
-        fighting === 2 ? winGame() : defeatMonster();
     }
 }
 
 function dodge() {
-    text.innerText = 'You dodged the attack from the ' + monsters[fighting] + '.';
+    text.innerText = 'You dodged the attack from the ' + monsters[fighting].name + '.';
 }
 
 function defeatMonster() {
